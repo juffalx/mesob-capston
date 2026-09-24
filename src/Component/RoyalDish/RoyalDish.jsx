@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './RoyalDish.css';
 import ImgBox from '../UI/ImgBox';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../store/useCartStore';
 import { fmt } from '../../data/dishes';
 import { useMenuData } from '../../api';
 

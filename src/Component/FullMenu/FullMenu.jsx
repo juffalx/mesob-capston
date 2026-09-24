@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './FullMenu.css';
 import ImgBox from '../UI/ImgBox';
 import { CATEGORIES, fmt } from '../../data/dishes';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../store/useCartStore';
 import { useMenuData } from '../../api';
 
 function FullMenu() {

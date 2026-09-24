@@ -3,7 +3,7 @@ import './Header.css';
 import Logo from './Logo/Logo';
 import Nav from './Navigation/Nav';
 import CartForm from './CartForm/CartForm';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../store/useAuthStore';
 
 function Header() {
   const { logout, user } = useAuth();

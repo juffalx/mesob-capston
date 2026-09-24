@@ -1,39 +1,54 @@
-import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
-import './App.css';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
-import TodaySpecial from './Component/TodaySpecial/TodaySpecial';
-import Login from './Component/Login/Login';
-import Signup from './Component/Signup/Signup';
-import FullMenu from './Component/FullMenu/FullMenu';
-import RoyalDish from './Component/RoyalDish/RoyalDish';
-import CurrentOrderCart from './Component/CurrentOrderCart/CurrentOrderCart';
-import CheckoutDelivery from './Component/CheckoutDelivery/CheckoutDelivery';
-import NotFound404 from './Component/NotFound404/NotFound404';
+import ErrorBoundary from './ErrorBoundary';
+import './App.css';
+
+const TodaySpecial = lazy(
+  () => import('./Component/TodaySpecial/TodaySpecial')
+);
+
+const RoyalDish = lazy(() => import('./Component/RoyalDish/RoyalDish'));
+const FullMenu = lazy(() => import('./Component/FullMenu/FullMenu'));
+const CurrentOrderCart = lazy(
+  () => import('./Component/CurrentOrderCart/CurrentOrderCart')
+);
+const CheckoutDelivery = lazy(
+  () => import('./Component/CheckoutDelivery/CheckoutDelivery')
+);
+const Login = lazy(() => import('./Component/Login/Login'));
+const Signup = lazy(() => import('./Component/Signup/Signup'));
+const NotFound404 = lazy(() => import('./Component/NotFound404/NotFound404'));
+
+function PageLoader() {
+  return <div className="loading-state">Loading Mesob House...</div>;
+}
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<TodaySpecial />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="login" element={<Login />} />
-            <Route path="menu" element={<FullMenu />} />
-            <Route path="/menu/:id" element={<RoyalDish />} />{' '}
-            <Route path="future" element={<TodaySpecial />} />
-            <Route path="orderCart" element={<CurrentOrderCart />} />
-            <Route path="delivery" element={<CheckoutDelivery />} />
-            <Route
-              path="Delibery"
-              element={<Navigate to="/delivery" replace />}
-            />
-            <Route path="*" element={<NotFound404 />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-      {/* doc element modifier */}
-    </>
+    <BrowserRouter>
+      <ErrorBoundary>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<TodaySpecial />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path="login" element={<Login />} />
+              <Route path="menu" element={<FullMenu />} />
+              <Route path="/menu/:id" element={<RoyalDish />} />{' '}
+              <Route path="future" element={<TodaySpecial />} />
+              <Route path="orderCart" element={<CurrentOrderCart />} />
+              <Route path="delivery" element={<CheckoutDelivery />} />
+              <Route
+                path="Delibery"
+                element={<Navigate to="/delivery" replace />}
+              />
+              <Route path="*" element={<NotFound404 />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
+    </BrowserRouter>
   );
 }
 

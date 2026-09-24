@@ -2,9 +2,9 @@ import Signup from '../../Signup/Signup';
 import Login from '../../Login/Login';
 import './CartForm.css';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../../context/CartContext';
+import { useCart } from '../../../store/useCartStore';
 import { fmt } from '../../../data/dishes';
-import { useAuth } from '../../../context/AuthContext';
+import { useAuth } from '../../../store/useAuthStore';
 
 function CartForm() {
   const { logout, user } = useAuth();

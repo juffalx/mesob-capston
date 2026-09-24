@@ -1,6 +1,6 @@
 import './LogoLink.css';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../../../context/AuthContext';
+import { useAuth } from '../../../../store/useAuthStore';
 
 function LogoLink() {
   const { isLoggedIn } = useAuth();

@@ -6,9 +6,11 @@ export const useAuthStore = create(
     (set) => ({
       user: null,
       isAuthenticated: false,
-      login: (userData) => set({ user: userData, isAuthenticated: true }),
+      login: (user) => set({ user, isAuthenticated: true }),
       logout: () => set({ user: null, isAuthenticated: false }),
     }),
-    { name: 'addis-eats-auth' }
+    { name: 'mesob-auth' }
   )
 );
+
+export const useAuth = () => { const state = useAuthStore(); return { ...state, isLoggedIn: state.isAuthenticated }; };
