@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './FullMenu.css';
-import ImgBox from '../UI/ImgBox';
 import { CATEGORIES, fmt } from '../../data/dishes';
 import { useCart } from '../../store/useCartStore';
 import { useMenuData } from '../../api';
@@ -22,6 +21,10 @@ function FullMenu() {
   const countFor = (key) =>
     key === 'all' ? dishes.length : dishes.filter((d) => d.cat === key).length;
 
+  // useEffect(
+  //   visible.map((d) => console.log(d.id)),
+  //   []
+  // );
   return (
     <main className="menu-page">
       <header className="menu-head">
@@ -64,9 +67,14 @@ function FullMenu() {
         {visible.map((d) => (
           <article className="menu-card" key={d.id}>
             <div className="menu-card-img">
-              <ImgBox
-                label={d.name + ' photo'}
-                style={{ minHeight: 170, borderRadius: '12px 12px 0 0' }}
+              <img
+                className="img-box"
+                src={`/asset/${d.forImg}.jpg`}
+                alt={`${d.name} photo`}
+                style={{
+                  minHeight: 170,
+                  borderRadius: '12px 12px 0 0',
+                }}
               />
               <span className="badge menu-tag">{d.tag}</span>
               <span className="spice-chip">🌶 {d.spice}</span>

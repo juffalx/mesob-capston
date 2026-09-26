@@ -1,8 +1,6 @@
-import './NotFound404.css'
+import './NotFound404.css';
 
 import { Link, useNavigate } from 'react-router-dom';
-import './NotFound404.css';
-import ImgBox from '../UI/ImgBox';
 import { useCart } from '../../store/useCartStore';
 import { useMenuData } from '../../api';
 import { fmt } from '../../data/dishes';
@@ -27,9 +25,15 @@ function NotFound404() {
     <main className="nf-page">
       <div className="nf-hero">
         <div className="empty-mesob">
-          <ImgBox
-            label="Empty Mesob"
-            style={{ minHeight: 130, width: 130, borderRadius: '50%' }}
+          <img
+            className="img-box"
+            src="/asset/empty-mesob.jpg"
+            alt="Empty Mesob"
+            style={{
+              minHeight: 130,
+              width: 130,
+              borderRadius: '50%',
+            }}
           />
         </div>
         <h1 className="nf-code">404</h1>
@@ -78,9 +82,14 @@ function NotFound404() {
           {favorites.map((f) => (
             <article className="nf-card" key={f.id}>
               <div className="nf-card-img">
-                <ImgBox
-                  label={f.name + ' photo'}
-                  style={{ minHeight: 150, borderRadius: '12px 12px 0 0' }}
+                <img
+                  className="img-box"
+                  src={`/asset/${f.forImg}.jpg`}
+                  alt={`${f.name} photo`}
+                  style={{
+                    minHeight: 150,
+                    borderRadius: '12px 12px 0 0',
+                  }}
                 />
                 <span className="badge nf-tag">
                   {f.isFasting ? '🌿 ' : ''}

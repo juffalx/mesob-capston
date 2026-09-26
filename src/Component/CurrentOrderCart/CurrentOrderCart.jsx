@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CurrentOrderCart.css';
-import ImgBox from '../UI/ImgBox';
 import { useCart, COUPON_CODE } from '../../store/useCartStore';
 import { fmt } from '../../data/dishes';
 
@@ -27,7 +26,7 @@ function CurrentOrderCart() {
     <main className="cart-page">
       <p className="kicker">🍲 COMMUNAL FEASTING</p>
       <div className="cart-head">
-        <h1>Your Gursha Basket</h1>
+        <h1>orderCart</h1>
         <div className="steps">
           <span className="step active">1 · Review Basket</span> /
           <span className="step">2 · Delivery Details</span> /
@@ -76,9 +75,19 @@ function CurrentOrderCart() {
 
             {cart.items.map((i) => (
               <article className="cart-item" key={i.id + (i.option || '')}>
-                <ImgBox
-                  label={i.name + ' photo'}
-                  style={{ minHeight: 90, width: 110 }}
+                <img
+                  className="img-box"
+                  src={
+                    i.forImg
+                      ? `/asset/${i.forImg}.jpg`
+                      : '/asset/empty-mesob.jpg'
+                  }
+                  alt={`${i.name} photo`}
+                  style={{
+                    minHeight: 90,
+                    width: 110,
+                    borderRadius: 8,
+                  }}
                 />
                 <div className="item-info">
                   <h3>{i.name}</h3>

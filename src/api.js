@@ -24,6 +24,7 @@ const CAT_MAP = {
 
 // menu.json item -> the shape every component already expects SAAME OBJECT
 const normalize = (raw) => ({
+  forImg: raw.id,
   id: raw.slug || raw.id,
   name: raw.nameEn || raw.name || raw.slug || 'Unnamed dish',
   price: Number(raw.priceETB ?? raw.price ?? 0),

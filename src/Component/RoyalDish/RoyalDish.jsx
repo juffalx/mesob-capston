@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './RoyalDish.css';
-import ImgBox from '../UI/ImgBox';
 import { useCart } from '../../store/useCartStore';
 import { fmt } from '../../data/dishes';
 import { useMenuData } from '../../api';
@@ -30,12 +29,14 @@ function RoyalDish() {
       visible.map((d) => console.log(d.name));
       console.log('visible is ', visible);
       console.log('Visible Final is ', visibleFinal);
-      console.log("amharic name is ",visibleFinal.amName );
+      console.log('amharic name is ', visibleFinal.amName);
     }
   }, [id, dishes, loading, visibleFinal]);
 
   if (loading) {
-    return <div className="loading-state">it's loading... (Loading Menu...)</div>;
+    return (
+      <div className="loading-state">it's loading... (Loading Menu...)</div>
+    );
   }
 
   if (!visibleFinal) {
@@ -99,22 +100,42 @@ function RoyalDish() {
       <div className="doro-grid">
         <div className="doro-left">
           <div className="gallery">
-            <ImgBox
-              label={`${visibleFinal.id} Photos`}
+            <img
+              className="img-box"
+              src={`/asset/${visibleFinal.forImg}.jpg`}
+              alt={`${visibleFinal.name} photo`}
               style={{ minHeight: 360 }}
             />
             <span className="badge gallery-tag">HOUSE SIGNATURE</span>
             <span className="badge green gallery-tag-2">100% TEFF OPTION</span>
             <div className="thumbs">
-              <ImgBox label="thumb 1" style={{ minHeight: 80 }} />
-              <ImgBox label="thumb 2" style={{ minHeight: 80 }} />
-              <ImgBox label="thumb 3" style={{ minHeight: 80 }} />
+              <img
+                className="img-box"
+                src={`/asset/${visibleFinal.forImg}.jpg`}
+                alt={`${visibleFinal.name} thumbnail 1`}
+                style={{ minHeight: 80 }}
+              />
+
+              <img
+                className="img-box"
+                src={`/asset/${visibleFinal.forImg}.jpg`}
+                alt={`${visibleFinal.name} thumbnail 2`}
+                style={{ minHeight: 80 }}
+              />
+
+              <img
+                className="img-box"
+                src={`/asset/${visibleFinal.forImg}.jpg`}
+                alt={`${visibleFinal.name} thumbnail 3`}
+                style={{ minHeight: 80 }}
+              />
             </div>
           </div>
 
           <div className="story-card">
             <p className="kicker">📖 HERITAGE & LINEAGE · The Crown Jewel</p>
-            <h2>{visibleFinal.name}</h2><span>{visibleFinal.amName}</span>
+            <h2>{visibleFinal.name}</h2>
+            <span>{visibleFinal.amName}</span>
             <p> {visibleFinal.desc}</p>
             <div className="story-chips">
               <span>
