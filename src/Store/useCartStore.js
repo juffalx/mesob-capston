@@ -15,6 +15,7 @@ const makeLine = (dish, qty, opts = {}) => {
   const optionPrice = opts.optionPrice || 0;
   const unitPrice = dish.price + optionPrice;
   return {
+    forImg: dish.forImg,
     id: dish.id,
     name: dish.name,
     option: opts.option || null,
@@ -38,7 +39,9 @@ export const useCartStore = create(
         const itemId = dish.id;
         const key = lineKey(itemId, opts.option);
         const items = get().items;
-        const existing = items.find((item) => lineKey(item.id, item.option) === key);
+        const existing = items.find(
+          (item) => lineKey(item.id, item.option) === key
+        );
 
         if (existing) {
           const nextQty = existing.qty + qty;
@@ -62,7 +65,9 @@ export const useCartStore = create(
         set({
           items:
             qty <= 0
-              ? get().items.filter((item) => lineKey(item.id, item.option) !== key)
+              ? get().items.filter(
+                  (item) => lineKey(item.id, item.option) !== key
+                )
               : get().items.map((item) =>
                   lineKey(item.id, item.option) === key
                     ? { ...item, qty, lineTotal: item.unitPrice * qty }
@@ -73,7 +78,11 @@ export const useCartStore = create(
 
       removeItem: (id, option) => {
         const key = lineKey(id, option);
-        set({ items: get().items.filter((item) => lineKey(item.id, item.option) !== key) });
+        set({
+          items: get().items.filter(
+            (item) => lineKey(item.id, item.option) !== key
+          ),
+        });
       },
 
       removeFromCart: (id) => {
@@ -123,4 +132,7 @@ export const selectCart = (state) => {
   };
 };
 
-export const useCart = () => { const state = useCartStore(); return { ...state, ...selectCart(state) }; };
+export const useCart = () => {
+  const state = useCartStore();
+  return { ...state, ...selectCart(state) };
+};
