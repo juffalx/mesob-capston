@@ -27,7 +27,7 @@ function NotFound404() {
         <div className="empty-mesob">
           <img
             className="img-box"
-            src="/asset/empty-mesob.jpg"
+            src={`${import.meta.env.BASE_URL}asset/empty-mesob.jpg`}
             alt="Empty Mesob"
             style={{
               minHeight: 130,
@@ -84,7 +84,7 @@ function NotFound404() {
               <div className="nf-card-img">
                 <img
                   className="img-box"
-                  src={`/asset/${f.forImg}.jpg`}
+                  src={`${import.meta.env.BASE_URL}asset/${f.forImg}.jpg`}
                   alt={`${f.name} photo`}
                   style={{
                     minHeight: 150,

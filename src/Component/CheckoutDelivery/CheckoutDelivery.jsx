@@ -405,16 +405,10 @@ function CheckoutDelivery() {
             <div className="summary-item" key={item.id + (item.option || '')}>
               <img
                 className="img-box"
-                src={`/asset/${item.forImg}.jpg`}
+                src={`${import.meta.env.BASE_URL}asset/${item.forImg}.jpg`}
                 style={{ minHeight: 54, width: 54, borderRadius: 8 }}
               />
 
-              {/* <img
-                src={`/asset/${item.forImg}.jpg`}
-                alt={`${item.name} photo`}
-                onError={() => console.log('IMAGE ERROR:', item.forImg)}
-                onLoad={() => console.log('IMAGE FOUND:', item.forImg)}
-              /> */}
               <div>
                 <b>{item.name}</b>
                 {item.option && <small>{item.option}</small>}

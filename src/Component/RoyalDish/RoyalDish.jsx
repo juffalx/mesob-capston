@@ -102,7 +102,7 @@ function RoyalDish() {
           <div className="gallery">
             <img
               className="img-box"
-              src={`/asset/${visibleFinal.forImg}.jpg`}
+              src={`${import.meta.env.BASE_URL}asset/${visibleFinal.forImg}.jpg`}
               alt={`${visibleFinal.name} photo`}
               style={{ minHeight: 360 }}
             />
@@ -111,21 +111,21 @@ function RoyalDish() {
             <div className="thumbs">
               <img
                 className="img-box"
-                src={`/asset/${visibleFinal.forImg}.jpg`}
+                src={`${import.meta.env.BASE_URL}asset/${visibleFinal.forImg}.jpg`}
                 alt={`${visibleFinal.name} thumbnail 1`}
                 style={{ minHeight: 80 }}
               />
 
               <img
                 className="img-box"
-                src={`/asset/${visibleFinal.forImg}.jpg`}
+                src={`${import.meta.env.BASE_URL}asset/${visibleFinal.forImg}.jpg`}
                 alt={`${visibleFinal.name} thumbnail 2`}
                 style={{ minHeight: 80 }}
               />
 
               <img
                 className="img-box"
-                src={`/asset/${visibleFinal.forImg}.jpg`}
+                src={`${import.meta.env.BASE_URL}asset/${visibleFinal.forImg}.jpg`}
                 alt={`${visibleFinal.name} thumbnail 3`}
                 style={{ minHeight: 80 }}
               />

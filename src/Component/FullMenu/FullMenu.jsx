@@ -69,7 +69,7 @@ function FullMenu() {
             <div className="menu-card-img">
               <img
                 className="img-box"
-                src={`/asset/${d.forImg}.jpg`}
+                src={`${import.meta.env.BASE_URL}asset/${d.forImg}.jpg`}
                 alt={`${d.name} photo`}
                 style={{
                   minHeight: 170,

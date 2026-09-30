@@ -79,7 +79,7 @@ function CurrentOrderCart() {
                   className="img-box"
                   src={
                     i.forImg
-                      ? `/asset/${i.forImg}.jpg`
+                      ? `${import.meta.env.BASE_URL}asset/${i.forImg}.jpg`
                       : '/asset/empty-mesob.jpg'
                   }
                   alt={`${i.name} photo`}
