@@ -26,7 +26,8 @@ function PageLoader() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/mesob-capston">
+      {' '}
       <ErrorBoundary>
         <Suspense fallback={<PageLoader />}>
           <Routes>
