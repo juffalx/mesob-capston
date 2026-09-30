@@ -40,7 +40,7 @@ const normalize = (raw) => ({
   desc: raw.description || raw.desc || '',
   servings: raw.servings || '',
   isFasting: Boolean(raw.isFasting),
-  amName:raw.nameAm || 'no amharic name'
+  amName: raw.nameAm || 'no amharic name',
 });
 
 let cache = null; // samples { dishes, specials, fromApi }
@@ -49,11 +49,11 @@ async function loadMenuData() {
   if (cache) return cache;
   try {
     const [menuRes, specRes] = await Promise.all([
-      fetch('/menu.json').then((r) => {
+      fetch(`${import.meta.env.BASE_URL}menu.json`).then((r) => {
         if (!r.ok) throw new Error('menu.json missing');
         return r.json();
       }),
-      fetch('/specials.json').then((r) => {
+      fetch(`${import.meta.env.BASE_URL}specials.json`).then((r) => {
         if (!r.ok) throw new Error('specials.json missing');
         return r.json();
       }),
@@ -100,7 +100,6 @@ export function useMenuData() {
   }, []);
   return data;
 }
-
 
 export function findDish(id) {
   const src = cache?.dishes || DISHES;
