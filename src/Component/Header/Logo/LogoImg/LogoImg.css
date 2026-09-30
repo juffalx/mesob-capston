@@ -1,6 +1,10 @@
-.logo-img{
-    position: relative;
-    top: 14;
-    width: 204.28px;
-    height: 32px;
+.logo-img {
+  width: 204.28px;
+  height: 32px;
+}
+
+.logo-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
